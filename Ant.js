@@ -12,8 +12,12 @@ class Ant {
 
   update() {
     this.x += this.antSpeed * this.direction;
+    this.y += this.antSpeed/2 * this.direction;
 
     if (this.x <= 0 || this.x >= width) {
+      this.direction *= -1;
+    }
+    if (this.y <= 0 || this.y >= height) {
       this.direction *= -1;
     }
   }

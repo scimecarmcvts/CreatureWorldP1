@@ -105,7 +105,12 @@ class World {
     
   }
   drawDesert() {
-    background("rgb(212,137,43)");
+
+     background("rgb(199, 228, 255)");
+    fill("rgb(212,137,43)");
+    rect(0, height / 4, width, (height / 4) * 3 )
+
+
     
     if (this.scene == 2) {
       for (let i = 0; i < this.desertCreatures.length; i++) {
