@@ -16,6 +16,9 @@ async function setup() {
   snakeImg = loadImage("assets/snake.png");
   snakeImg1 = loadImage("assets/SnakeBernard.png");
   snakeImg2 = loadImage("assets/SnakeBertha.png");
+  Tframe0 = loadImage("assets/ToucanFrame0.png");
+  Tframe1 = loadImage("assets/ToucanFrame1.png");
+  Tframe2 = loadImage("assets/ToucanFrame2.png");
   createCanvas(1980, 1080);
   //createCanvas(600, 400);
 
