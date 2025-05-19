@@ -15,6 +15,9 @@ async function setup() {
   snakeImg = loadImage("assets/snake.png");
   snakeImg1 = loadImage("assets/SnakeBernard.png");
   snakeImg2 = loadImage("assets/SnakeBertha.png");
+  Tframe0 = loadImage('assets/ToucanFrame0.png');
+  Tframe1 = loadImage('assets/ToucanFrame1.png');
+  Tframe2 = loadImage('assets/ToucanFrame2.png');
   createCanvas(1980, 1080);
   //createCanvas(600, 400);
 
@@ -43,7 +46,7 @@ async function setup() {
 
   for (let i = 0; i < 5; i++) {
     w.rainForestCreatures.push(
-      new CToucan(random(width), random(height), "left", 2, "idle", 100, 100)
+      new CToucan('assets/ToucanFrame0.png', random(width), random(height), 100)
     );
 
     w.rainForestCreatures.push(
