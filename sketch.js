@@ -6,6 +6,7 @@ let scorpImg;
 let snakeImg;
 let snakeImg1;
 let snakeImg2;
+let underground, above;
 
 async function setup() {
   img = await loadImage("./assets/rock.png");
@@ -15,9 +16,6 @@ async function setup() {
   snakeImg = loadImage("assets/snake.png");
   snakeImg1 = loadImage("assets/SnakeBernard.png");
   snakeImg2 = loadImage("assets/SnakeBertha.png");
-  Tframe0 = loadImage('assets/ToucanFrame0.png');
-  Tframe1 = loadImage('assets/ToucanFrame1.png');
-  Tframe2 = loadImage('assets/ToucanFrame2.png');
   createCanvas(1980, 1080);
   //createCanvas(600, 400);
 
@@ -76,11 +74,14 @@ async function setup() {
     w.desertCreatures.push(new Scorpion(scorpImg));
      w.desertCreatures.push(
      new Snake(random(width), random(height), snakeImg));
+     w.desertCreatures.push(new Worm(random(0, width), random(height/4, height), underground, above))
   }
 
   for (let i = 0; i < 50; i++) {
+    let cHeight = random(height/4, height);
+
     w.desertCreatures.push(
-      new Cactus(cactusImage, random(200), random(width), random(200, height))
+      new Cactus(cactusImage, map(cHeight, height/4, height, 50, 200), random(width), cHeight)
     );
 
     w.desertCreatures.push(new Tumbleweed());
@@ -107,9 +108,10 @@ function draw() {
 // }
 
 function mousePressed() {
-  if (mouseX > 0 && mouseX < width && mouseY > 50 && mouseY < height) {
+  if (mouseX > 0 && mouseX < width && mouseY > 50 && mouseY < height && keyCode == 65) {
     let fs = fullscreen();
     fullscreen(!fs);
+    
   }
 }
 

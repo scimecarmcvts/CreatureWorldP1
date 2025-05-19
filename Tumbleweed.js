@@ -4,7 +4,7 @@ constructor() {
   this.rotato = 0;
   this.n = random(1000);
   this.x = random(width);
-  this.y = random(height);
+  this.y = random(height / 4, height);
   this.display = true;
   this.size = 1;
   this.img = loadImage("assets/tumbler.png");
@@ -21,7 +21,7 @@ show(){
   this.px = this.x;
 }
 update(){
- this.x = width * noise(0.005 * this.n++);
+ this.x = width * noise(0.002 * this.n++);
   let xDif = this.px - this.x;
  this.rotato += (xDif*-5);
   //console.log(xDif*5);
