@@ -79,13 +79,16 @@ async function setup() {
      w.desertCreatures.push(new Worm(random(0, width), random(height/4, height), underground, above))
   }
 
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 150; i++) {
     let cHeight = random(height/4, height);
 
     w.desertCreatures.push(
       new Cactus(cactusImage, map(cHeight, height/4, height, 50, 200), random(width), cHeight)
     );
+  }
 
+  for (let i = 0; i < 30; i++) {
+  
     w.desertCreatures.push(new Tumbleweed());
   }
 }
