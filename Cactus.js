@@ -7,7 +7,7 @@ class Cactus {
     
     this.x = x;
 
-    this.maxAngle = 0.2; // maximum sway
+    this.maxAngle = 45; // maximum sway
     this.angle = 0;
     
     this.noiseSpeed = 0.01;
@@ -16,7 +16,7 @@ class Cactus {
 
   update( ) {
     //organic movement with noise
-    
+
     let noiseV = noise(this.xOffset);
     
     this.angle = map(noiseV, 0, 1, -this.maxAngle, this.maxAngle);
@@ -25,10 +25,12 @@ class Cactus {
   }
 
   show( ) {
- push(); translate(this.x, this.y);
+
+ push(); 
+ translate(this.x, this.y);
     //scale(1,-1);
     
-    shearX(this.angle);
+  shearX(this.angle);
   imageMode(CENTER);
     
   image(this.img, 0, 0, this.size, this.size);

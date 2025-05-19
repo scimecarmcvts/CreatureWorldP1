@@ -28,6 +28,7 @@ class Submarine{
     }
     
     for(let k=0;k<this.amount;k++){
+      fill(255);
       ellipse(this.bubblex[k],this.bubbley[k],this.bubblesize[k],this.bubblesize[k]);
       
       }
