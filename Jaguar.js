@@ -15,7 +15,7 @@ class Jaguar{
   }
   update(){
     this.x = noise(this.xOffset) * 2000;
-    this.y = noise(this.yOffset) * 1000;
+    this.y = noise(this.yOffset) * 1500;
     this.xOffset += 0.01;
     this.yOffset += 0.001;
   }
