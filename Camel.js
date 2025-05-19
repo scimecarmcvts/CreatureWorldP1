@@ -5,7 +5,7 @@ class Camel {
     // set this.y to the height of the ground
     this.y = random(height);
     this.xoff = random(1000);
-    this.camel_img = loadImage("camel.png");
+    this.camel_img = loadImage("assets/camel.png");
     this.camelSpeed = 0.75;
     this.camelDirection = 1;
     this.display = true;
