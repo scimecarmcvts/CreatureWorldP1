@@ -49,6 +49,7 @@ class Submarine{
     
   }
   update(){
+    this.y=(noise(this.x*0.00295)*height)+height/3.7;
     // Bubbles are also made here 
     if(frameCount % 20 == 0){ //amount of bubbles is made by the number after modulous
     if(this.direction==-1){

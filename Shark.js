@@ -19,6 +19,10 @@ show(){
   if(this.x<-width) {
     scale(1,1);
     this.x = width;
+    if (this.y > 1850 || this.y <1920) {
+      this.currentframe ==1;
+      this.y=600;
+    }
 }
     if (this.currentframe == 0) {
   image(this.img, this.x, this.y, 64, 64, 32, 0, 32, 32);
