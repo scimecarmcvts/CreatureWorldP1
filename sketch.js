@@ -18,6 +18,7 @@ async function setup() {
   createCanvas(1980, 1080);
   //createCanvas(600, 400);
 
+  //Adding Creature Objects
   w = new World();
   for (let i = 0; i < 15; i++) {
     w.oceanCreatures.push(new Creature(img));
@@ -88,18 +89,18 @@ function draw() {
   w.show();
 }
 
-class Tree {
-  constructor() {
-    this.x = random(width);
-    this.y = 0;
-  }
-  show() {
-    for (let i = 0; i < 50; i++) {
-      fill("rgb(163,99,32)");
-      rect(this.x, this.y, 20, height);
-    }
-  }
-}
+// class Tree {
+//   constructor() {
+//     this.x = random(width);
+//     this.y = 0;
+//   }
+//   show() {
+//     for (let i = 0; i < 50; i++) {
+//       fill("rgb(163,99,32)");
+//       rect(this.x, this.y, 20, height);
+//     }
+//   }
+// }
 
 function mousePressed() {
   if (mouseX > 0 && mouseX < width && mouseY > 50 && mouseY < height) {
