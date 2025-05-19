@@ -1,40 +1,26 @@
 class CToucan {
-  constructor(x, y, direction, speed, behaviour, size) {
+  constructor(img, x, y, size) {
+    this.img = img;
     this.x = x;
     this.y = y;
-    
-    this.direction = direction;
-    this.speed = speed;
-    this.behaviour = behaviour;
+    this.behaviour = 0;
     this.size = size;
-    this.frame0 = loadImage('/assets/ToucanFrame0.png');
-    this.frame1 = loadImage('/assets/ToucanFrame1.png');
-    this.frame2 = loadImage('/assets/ToucanFrame2.png');
-    this.img = this.frame0;
-    this.frame = round(random(3));
+    this.t = 0;
   }
   show() {
-        if (frameCount % 60 == 0) {
-          this.frame++;
+    this.t += random(0.01,0.04);
+    this.behaviour = 0 + noise(this.t) * (3);
+        if (this.behaviour >= 0 && this.behaviour <= 1)
+          this.img = Tframe0;
+        else if(this.behaviour >= 1 && this.behaviour <= 2) {
+          this.img = Tframe2;
+        } else if(this.behaviour >= 2 && this.behaviour <= 3) {
+          this.img = Tframe1;
         }
-      switch (this.frame){
-        case 0:
-          this.img = this.frame0;
-        break;
-        case 1:
-          this.img = this.frame1;
-        break;
-        case 2:
-          this.img = this.frame2;
-        break;
-        case 3:
-          this.frame = 0;
-        break;
-      }
       image(this.img, this.x, this.y, this.size, this.size);
+        
   }
-  update(){
-    
-    
+  update() {
+
   }
 }
