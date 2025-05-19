@@ -5,7 +5,7 @@ class Camel {
     // set this.y to the height of the ground
     this.y = random(height);
     this.xoff = random(1000);
-    this.camel_img = loadImage("assets/camel.png");
+    this.camel_img = loadImage("camel.png");
     this.camelSpeed = 0.75;
     this.camelDirection = 1;
     this.display = true;
@@ -14,30 +14,24 @@ class Camel {
 
   show() {
     push();
-    scale(this.camelDirection, 1);
+    translate(this.x + this.camel_img.width / 2, this.y + this.camel_img.height / 2);
+    if (this.camelDirection === -1) {
+      scale(-1, 1);
+    }
+    image(this.camel_img, -this.camel_img.width / 2, -this.camel_img.height / 2);
     pop();
-    this.xoff += 0.0035;
+    this.xoff += 0.03;
   }
 
   update() {
     this.x += this.camelSpeed * this.camelDirection;
 
     let x = (noise(this.xoff) * width);
-    
 
     if (x > this.x) {
       this.camelDirection = 1;
     } else if (x < this.x) {
       this.camelDirection = -1;
-    }
-
-    // set the conditional to fit the positions of the walls
-    if (this.x >= width - 32) {
-      this.camelDirection = -1;
-      this.x -= 100;
-    } else if (this.x <= 32) {
-      this.camelDirection = 1;
-      this.x += 100;
     }
   }
 }
