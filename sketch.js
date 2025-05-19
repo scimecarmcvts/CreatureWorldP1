@@ -76,8 +76,10 @@ async function setup() {
   }
 
   for (let i = 0; i < 50; i++) {
+    let cHeight = random(200, height);
+
     w.desertCreatures.push(
-      new Cactus(cactusImage, random(200), random(width), random(200, height))
+      new Cactus(cactusImage, map(cHeight, 200, height, 50, 200), random(width), cHeight)
     );
 
     w.desertCreatures.push(new Tumbleweed());
@@ -104,9 +106,10 @@ function draw() {
 // }
 
 function mousePressed() {
-  if (mouseX > 0 && mouseX < width && mouseY > 50 && mouseY < height) {
+  if (mouseX > 0 && mouseX < width && mouseY > 50 && mouseY < height && keyCode == 65) {
     let fs = fullscreen();
     fullscreen(!fs);
+    
   }
 }
 
