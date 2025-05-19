@@ -18,6 +18,7 @@ async function setup() {
   createCanvas(1980, 1080);
   //createCanvas(600, 400);
 
+  console.log("Hello Class");
   //Adding Creature Objects
   w = new World();
   for (let i = 0; i < 15; i++) {
