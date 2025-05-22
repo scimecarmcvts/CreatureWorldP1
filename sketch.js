@@ -77,7 +77,7 @@ async function setup() {
     w.desertCreatures.push(new Scorpion(scorpImg));
      w.desertCreatures.push(
      new Snake(random(width), random(height), snakeImg));
-     w.desertCreatures.push(new Worm(random(0, width), random(height/4, height), underground, above))
+    //  w.desertCreatures.push(new Worm(random(0, width), random(height/4, height), underground, above))
   }
 
   for (let i = 0; i < 150; i++) {

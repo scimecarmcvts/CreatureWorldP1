@@ -10,7 +10,7 @@ class World {
     this.btnL.position(0, 0);
     this.btnL.mousePressed(this.moveLeft);
     this.btnR = createButton("=>");
-    this.btnR.position(width - 284, 0);
+    this.btnR.position(width - 90, 0);
     this.btnR.mousePressed(this.moveRight);
 
     //Noise Variables
