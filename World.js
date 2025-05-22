@@ -2,7 +2,7 @@
 class World {
   constructor() {
     //Scenes
-    this.scene = 2.0;
+    this.scene = 0.0;
     this.scenes = ["Rainforest", "Ocean", "Desert"];
 
     //Buttons
@@ -94,6 +94,22 @@ class World {
   }
   drawRainforest() {
    background(0, 155, 0);
+   fill(0, 150,255);
+   beginShape();
+  vertex(0,0);
+  vertex(width, 0);
+  vertex(width, 150);
+  let anchorGap = 100;
+  let mountainheight = 150;
+  let t = 0;
+    for (let i = 3; i >= 0; i--){
+      let y = noise(t) * mountainheight + 150;
+      let x = width/4 * i;
+      bezierVertex(x - anchorGap, y, x + anchorGap, y, x, y);
+      t += 0.9;
+      //console.log("x:" + x + "y: " + y);
+    }
+   endShape();
    
     //Draw Rain Forest Creatures
     if (this.scene == 0) {

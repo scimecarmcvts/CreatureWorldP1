@@ -20,9 +20,8 @@ async function setup() {
   Tframe1 = loadImage("assets/ToucanFrame1.png");
   Tframe2 = loadImage("assets/ToucanFrame2.png");
   createCanvas(1980, 1080);
-  //createCanvas(600, 400);
 
-  console.log("Hello Class");
+
   //Adding Creature Objects
   w = new World();
   for (let i = 0; i < 15; i++) {
@@ -63,13 +62,32 @@ async function setup() {
   }
 
   for (let i = 0; i < 50; i++) {
-    w.rainForestCreatures.push(
-      new JungleTree(IJTree, random(width), random(height), random(20, 50))
-    );
-    w.rainForestCreatures.push(new BushBerry());
-
+    
     w.rainForestCreatures.push(new Ant());
   }
+
+  for (let i = 0; i < 100; i++){
+    w.rainForestCreatures.push(new BushBerry());
+  } 
+
+
+  let startY = 200;
+  let treeSize = 20;
+  for (let i = 0; i < 200; i++){
+    //as the loop iterates, move down the screen and increase the tree size
+
+   w.rainForestCreatures.push(
+      new JungleTree(IJTree, random(width), startY, treeSize)
+    );
+
+    treeSize++;
+    startY += 2;
+
+  }
+  
+
+
+
 
   for (let i = 0; i < 5; i++) {
     w.desertCreatures.push(new Camel());
