@@ -2,8 +2,8 @@
 
 class Ant {
   constructor() {
-    this.x = random(0, width);
-    this.y = random(0, height);
+    this.x = random(width/3, width);
+    this.y = random(height/3, height);
     this.size = 1;
     this.direction = 1;
     this.antSpeed = random(-1, -2);
@@ -17,9 +17,7 @@ class Ant {
     if (this.x <= 0 || this.x >= width) {
       this.direction *= -1;
     }
-    if (this.y <= 0 || this.y >= height) {
-      this.direction *= -1;
-    }
+ 
   }
 
   show() {
