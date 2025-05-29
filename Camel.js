@@ -1,37 +1,36 @@
 class Camel {
   constructor() {
-    // set this.x to the x position of the desert area
     this.x = random(width);
-    // set this.y to the height of the ground
-    this.y = random(height);
+    this.y = height * 0.75; 
     this.xoff = random(1000);
     this.camel_img = loadImage("assets/camel.png");
-    this.camelSpeed = 0.75;
+    this.targetX = this.x; 
+    this.easing = 0.05; 
     this.camelDirection = 1;
     this.display = true;
-    this.size = 2;
+    this.size = 3; 
   }
 
   show() {
     push();
-    translate(this.x + this.camel_img.width / 2, this.y + this.camel_img.height / 2);
-    if (this.camelDirection === -1) {
-      scale(-1, 1);
-    }
-    image(this.camel_img, -this.camel_img.width / 2, -this.camel_img.height / 2);
+    translate(this.x, this.y); 
+    scale(this.camelDirection * this.size, this.size); 
+    image(this.camel_img, 0, 0); 
     pop();
-    this.xoff += 0.03;
   }
 
   update() {
-    this.x += this.camelSpeed * this.camelDirection;
+    let newTargetX = noise(this.xoff) * width;
+    this.targetX = lerp(this.targetX, newTargetX, 0.02);
 
-    let x = (noise(this.xoff) * width);
+    this.x = lerp(this.x, this.targetX, this.easing);
 
-    if (x > this.x) {
+    if (this.targetX > this.x + 1) { 
       this.camelDirection = 1;
-    } else if (x < this.x) {
+    } else if (this.targetX < this.x - 1) {
       this.camelDirection = -1;
     }
+
+    this.xoff += 0.005; 
   }
 }
