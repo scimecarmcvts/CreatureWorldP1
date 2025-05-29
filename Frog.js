@@ -17,6 +17,7 @@ class Frog{
     this.jumping = true;
     this.left = false;
   }
+
   show(){
     // shows the frog at its position and updates if it should flip its x axis or not
     if (this.display){
@@ -31,7 +32,39 @@ class Frog{
     } 
   }
   update(){
+    if(mouseIsPressed == true && this.updatedMouse == false){
+      if(mouseX > this.xpos - this.size *32 && mouseX < this.xpos + this.size * 32 && mouseY > this.ypos - this.size *32 && mouseY < this.ypos + this.size * 32){
+      this.xoffset = mouseX - this.xpos;
+      this.yoffset = mouseY - this.ypos;
+      this.beingHeld = true;
+      this.jumpspeed = floor(random(6,10));
+      }
     
+      this.updatedMouse = true;
+  }    else{
+    if(mouseIsPressed == false){
+      this.updatedMouse = false;
+      this.beingHeld = false;
+    }
+  }
+  console.log(this.beingHeld);
+     if(this.beingHeld == true){
+      if(keyIsPressed){
+        if(key == '-' || key == "_"){
+          if(this.size > 0){
+          this.size -= .1;
+          }
+        }
+        if (key == "=" || key == "+"){
+          this.size += .1;
+        }
+      }
+      this.xpos = mouseX - this.xoffset;
+      this.ypos = mouseY - this.yoffset;
+      this.floorpos = this.ypos;
+      this.jumping = true;
+      return;
+     }
      if (this.ypos >= this.floorpos && this.jumping == false){
        // if the frog is on the floor generate a random number to see if it should jump
        this.ypos = this.floorpos;
