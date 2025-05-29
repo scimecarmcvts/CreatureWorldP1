@@ -6,7 +6,7 @@ class Shark {
     this.display = true;
     this.size = 1;
     this.dir = 1;
-    this.speed = 100;
+    this.speed = 10;
     this.currentframe = 0;
     this.img = loadImage("./assets/shark.png");
     this.frameTimer = 0;
@@ -46,4 +46,8 @@ show(){
     }
   }
 
+
+}
+function mouseClicked (){
+    this.size*=10;
 }
