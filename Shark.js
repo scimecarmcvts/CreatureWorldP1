@@ -6,10 +6,12 @@ class Shark {
     this.display = true;
     this.size = 1;
     this.dir = 1;
-    this.speed = 10;
+    this.speed = 100;
     this.currentframe = 0;
     this.img = loadImage("./assets/shark.png");
     this.frameTimer = 0;
+    this.velocity = createVector(300,500);
+    this.acceleration= createVector(0.2, 0.2);
   }
     
 show(){
@@ -35,6 +37,7 @@ show(){
   }
   
   update(){
+    this.velocity.add(this.acceleration);
     this.x -= 3 * this.dir;
     this.frameTimer++;
     if(this.frameTimer > 10) {
