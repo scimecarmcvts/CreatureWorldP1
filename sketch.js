@@ -74,7 +74,7 @@ async function setup() {
 
   let startY = 200;
   let treeSize = 20;
-  for (let i = 0; i < 200; i++){
+  for (let i = 0; i < 180; i++){
     //as the loop iterates, move down the screen and increase the tree size
 
    w.rainForestCreatures.push(
