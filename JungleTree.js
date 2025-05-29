@@ -1,11 +1,11 @@
 class JungleTree {
-  constructor(img, x, y, size) {
+  constructor(img, img2, x, y, size) {
     this.img = img;
     this.x = x;
     this.y = y;
     this.size = size;
-    this.var1 = loadImage("/assets/JTree1.png");
-    this.var2 = loadImage("/assets/JTree2.png");
+    this.var1 = img;
+    this.var2 = img2;
     this.chance = random(1, 2);
     this.varient = round(this.chance);
   }

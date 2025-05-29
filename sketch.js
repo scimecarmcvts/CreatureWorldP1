@@ -11,6 +11,7 @@ let underground, above;
 async function setup() {
   img = await loadImage("./assets/rock.png");
   IJTree = loadImage("assets/JTree1.png");
+  IJTree2 = loadImage("assets/JTree2.png");
   cactusImage = loadImage("assets/cactus.png"); // loads image
   scorpImg = loadImage("assets/scorp.png");
   snakeImg = loadImage("assets/snake.png");
@@ -77,7 +78,7 @@ async function setup() {
     //as the loop iterates, move down the screen and increase the tree size
 
    w.rainForestCreatures.push(
-      new JungleTree(IJTree, random(width), startY, treeSize)
+      new JungleTree(IJTree, IJTree2, random(width), startY, treeSize)
     );
 
     treeSize++;
