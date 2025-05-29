@@ -1,7 +1,8 @@
 class Camel {
   constructor() {
     this.x = random(width);
-    this.y = height * 0.75; 
+    //set the height to the height of the ground
+    this.y = height/2; 
     this.xoff = random(1000);
     this.camel_img = loadImage("assets/camel.png");
     this.targetX = this.x; 
