@@ -3,7 +3,7 @@ class Frog{
   // initilizes frog variables
   constructor(xpos,ypos,rspeed,lspeed,jumpprob,floorpos,jumpspeed,left){
     this.velocity = createVector(3,jumpspeed);
-    this.acceleration = createVector(0,-.25);
+    this.acceleration = createVector(0,.25);
     this.jumpprob = jumpprob;
     this.left = false;
     this.display = true;
@@ -49,6 +49,7 @@ class Frog{
     }
   }
      if(this.beingHeld == true){
+      
       if(keyIsPressed){
         if(key == '-' || key == "_"){
           if(this.size > 0){
@@ -98,7 +99,7 @@ class Frog{
       this.jumping = false;
     }
     if (this.jumping == true){
-       this.velocity.sub(this.acceleration);
+       this.velocity.add(this.acceleration);
       this.position.add(this.velocity);
     }
      
