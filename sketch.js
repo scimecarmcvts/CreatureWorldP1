@@ -45,6 +45,20 @@ async function setup() {
     w.oceanCreatures.push(new Bird());
   }
 
+  let startY = 200;
+  let treeSize = 20;
+  for (let i = 0; i < 180; i++){
+    //as the loop iterates, move down the screen and increase the tree size
+
+   w.rainForestCreatures.push(
+      new JungleTree(IJTree, IJTree2, random(width), startY, treeSize)
+    );
+
+    treeSize++;
+    startY += 1;
+
+  }
+
   for (let i = 0; i < 5; i++) {
     w.rainForestCreatures.push(
       new CToucan('assets/ToucanFrame0.png', random(width), random(height) + 200, 100)
@@ -72,19 +86,7 @@ async function setup() {
   } 
 
 
-  let startY = 200;
-  let treeSize = 20;
-  for (let i = 0; i < 180; i++){
-    //as the loop iterates, move down the screen and increase the tree size
-
-   w.rainForestCreatures.push(
-      new JungleTree(IJTree, IJTree2, random(width), startY, treeSize)
-    );
-
-    treeSize++;
-    startY += 2;
-
-  }
+  
   
 
 
