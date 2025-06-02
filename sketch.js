@@ -61,7 +61,7 @@ async function setup() {
 
   for (let i = 0; i < 5; i++) {
     w.rainForestCreatures.push(
-      new CToucan('assets/ToucanFrame0.png', random(width), random(height) + 200, 100)
+      new CToucan(random(width), random(height) + 200, 100)
     );
 
     w.rainForestCreatures.push(
