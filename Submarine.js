@@ -1,8 +1,9 @@
 
 class Submarine{
   constructor(){
-    this.x= random(width);
-    this.y = height/4 + random(height-height/4);
+    //this.x= random(width);
+    //this.y = height/4 + random(height-height/4);
+    this.position = createVector(random(width),height/4 + random(height-height/4))
     this.size=0;
     this.speed=10;
   
@@ -13,17 +14,19 @@ class Submarine{
     this.bubblespeed=[];
     this.amount=0;
     this.direction = 1;
+    this.velocity = createVector(1,0)
+    this.oceanforce = createVector(-0.0002,0)
     
   }
   
   show(){
     //Check which way the submarine will go and move/flip accordingly
     push();
-    if(this.direction==1){
-    image(this.img, this.x,this.y,32*this.size,32*this.size);
+    if(this.velocity.x>=0){
+    image(this.img, this.position.x,this.position.y,32*this.size,32*this.size);
     }else{
       scale(-1,1);
-       image(this.img, -this.x-35,this.y,32*this.size,32*this.size);
+       image(this.img, -this.position.x-35,this.position.y,32*this.size,32*this.size);
       
     }
     
@@ -32,16 +35,16 @@ class Submarine{
       ellipse(this.bubblex[k],this.bubbley[k],this.bubblesize[k],this.bubblesize[k]);
       
       }
+    this.velocity.add(this.oceanforce)
+    this.position.add(this.velocity);
     
-    this.x+=this.direction;
-    
-    if(this.x>width&&this.direction==1){
+    if(this.position.x>width/*&&this.velocity.x>=1*/){
       
-      this.direction=-1;
+      this.velocity.x=-1.6;
       
     }
-      if(this.x< 0 - 32 &&this.direction==-1){
-        this.direction=1;
+      if(this.position.x<-32 /*&&this.velocity.x<=-1*/){
+        this.velocity.x=1;
         
         
       }
@@ -49,15 +52,15 @@ class Submarine{
     
   }
   update(){
-    this.y=(noise(this.x*0.00295)*height)+height/3.7;
+    this.position.y=(noise(this.position.x*0.00255)*height)+height/3.7;
     // Bubbles are also made here 
     if(frameCount % 20 == 0){ //amount of bubbles is made by the number after modulous
-    if(this.direction==-1){
-    this.bubblex.push(this.x*-1-35);
-    }else{
-       this.bubblex.push(this.x);
+    if(this.velocity.x<=-1){
+    this.bubblex.push(this.position.x*-1-35);
+    }else if(this.velocity.x>=0.1){
+       this.bubblex.push(this.position.x);
     }
-    this.bubbley.push(this.y+20);
+    this.bubbley.push(this.position.y+20);
     this.bubblesize.push(random(5,14));
     this.bubblespeed.push(random(0.9,1.5));
     // console.log(this.bubblex);
