@@ -1,8 +1,8 @@
 
 class Bird {
   constructor() {
-    this.x = width / 2;
-    this.y = 100;
+    this.position.x = width / 2;
+    this.position.y = 100;
     this.size = 2; 
     this.img = loadImage("assets/bird.png");
     this.xoff = random(1000);
@@ -13,9 +13,9 @@ class Bird {
   }
 
   update() {
-    this.x -= 3; //to make sure it only moves to the left
+    this.position.x -= 3; //to make sure it only moves to the left
     //this.x += (noise(this.xoff) - 0.5) * 2;
-    this.y += (noise(this.yoff) - 0.5) * 2;
+    this.position.y += (noise(this.yoff) - 0.5) * 2;
     this.xoff += 0.1;
     this.yoff += 0.01;
     
@@ -26,13 +26,13 @@ class Bird {
       this.frameTimer = 0;
     }
     
-    if (this.y > height / 4) {
-    this.y = height / 4;
+    if (this.position.y > height / 4) {
+    this.position.y = height / 4;
   } //to make sure it stay at the top of the screen
 
     
-    if (this.x > width) {
-      this.x = 0;  
+    if (this.position.x > width) {
+      this.position.x = 0;  
     } else if (this.x < 0) {
       this.x = width;  
     } //to make sure if it touches the left side it comes back on screen
