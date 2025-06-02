@@ -145,20 +145,25 @@ class World {
 
 class Creature {
   constructor(img) {
-    this.x = random(0, width);
-    this.y = height / 2;
+    this.position = createVector(random(0, width), height / 2);
+    this.velocity = createVector(0,0);
+    this.acceleration = createVector(0, 0.1);
     this.display = true;
     this.img = img;
     this.size = random(0.1, 1);
-    this.restHeight = random(height - 80, height - 50);
+    this.restHeight = random(height - 180, height - 150);
     
   }
   show() {
     if (this.img != null)
-      image(this.img, this.x, this.y, 32 * this.size, 32 * this.size);
+      image(this.img, this.position.x, this.position.y, 32 * this.size, 32 * this.size);
   }
   update() {
-    if (this.y < this.restHeight) this.y += 3;
+    if (this.position.y < this.restHeight) {
+      this.velocity.add(this.acceleration);
+      this.position.add(this.velocity);
+    }
+      
   }
   //   async loadImg(){
   //   return await loadImage("rock.png");
