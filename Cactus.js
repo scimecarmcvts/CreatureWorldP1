@@ -9,6 +9,7 @@ class Cactus {
     this.angle = 0;
     
     this.noiseSpeed = 0.01;
+    this.velocity =.25;
     this.xOffset = random(200,500);
   }
 
@@ -17,9 +18,13 @@ class Cactus {
 
     let noiseV = noise(this.xOffset);
     
-    this.angle = map(noiseV, 0, 1, -this.maxAngle, this.maxAngle);
+    this.angle = map(noiseV + this.velocity, 0, 1, -this.maxAngle, this.maxAngle);
     
     this.xOffset = this.xOffset + this.noiseSpeed;
+    //this.velocity.add(this.acceleration);
+    //this.velocity.limit(6);
+    //this.position.add(this.velocity);
+
   }
 
   show( ) {
