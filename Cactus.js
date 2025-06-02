@@ -1,11 +1,9 @@
-
+//Ayaan Patel, 6/2/2025/, Ecosystem Lab(Camel), EXTRA:
 class Cactus {
   constructor(img, size, x, y) {
     this.img = img;
     this.size = size;
-    this.y = y;
-    
-    this.x = x;
+    this.position = createVector(x, y)
 
     this.maxAngle = 45; // maximum sway
     this.angle = 0;
@@ -27,7 +25,7 @@ class Cactus {
   show( ) {
 
  push(); 
- translate(this.x, this.y);
+ translate(this.position.x, this.position.y);
     //scale(1,-1);
     
   shearX(this.angle);
