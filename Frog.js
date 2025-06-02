@@ -66,6 +66,7 @@ class Frog{
       this.jumping = true;
       return;
      }
+
      if (this.position.y >= this.floorpos && this.jumping == false){
        // if the frog is on the floor generate a random number to see if it should jump
        this.position.y = this.floorpos;
