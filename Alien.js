@@ -1,41 +1,22 @@
-
 class Alien {
   constructor() {
-    this.x = width / 2;
-    this.y = height / 2;
-    this.girlx = 0;
-    this.girly = 0;
-    this.size = 2;
-    this.girlsize = 1.8;
-    this.img = loadImage("assets/ufo.png");
-    this.girlimg = loadImage("assets/girlufo.png");
-
-    this.xoff = 10;
-    this.yoff = 10;
-    this.girlxoff = 5;
-    this.girlyoff = 5;
+    this.position = createVector(random(width), random(height));
+    this.velocity = createVector(2, -2);
+    this.acceleration = createVector(-0.01, 0.01);
+    this.img = loadImage("alien with ufo.png");
   }
 
   update() {
-    this.x = noise(this.xoff) * width;
-    this.y = noise(this.yoff) * (height / 5);
-    this.xoff += 0.005;
-    this.yoff += 0.005;
-    this.girlx = noise(this.girlxoff) * width;
-    this.girly = noise(this.girlyoff) * (height / 5);
-    this.girlxoff += 0.005;
-    this.girlyoff += 0.005;
+    this.velocity.add(this.acceleration);
+    this.velocity.limit(10);
+    this.position.add(this.velocity);
+  
   }
 
   show() {
-    image(this.img, this.x, this.y, 32 * this.size, 32 * this.size);
-
-    image(
-      this.girlimg,
-      this.girlx,
-      this.girly,
-      32 * this.girlsize,
-      32 * this.girlsize
-    );
+    stroke(255);
+    fill(0);
+    strokeWeight(2)
+    image(this.position.x, this.position.y, 2.5, 2.5);
   }
 }
