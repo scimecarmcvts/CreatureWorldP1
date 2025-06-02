@@ -31,7 +31,6 @@ class Frog{
     } 
   }
   update(){
-    console.log(this.mouse);
     this.mouse = createVector( mouseX, mouseY);
     if(mouseIsPressed == true && this.updatedMouse == false){
       if( this.mouse.x > this.position.x - this.size *32 &&  this.mouse.x < this.position.x + this.size * 32 &&  this.mouse.y > this.position.y - this.size *32 &&  this.mouse.y < this.position.y + this.size * 32){
