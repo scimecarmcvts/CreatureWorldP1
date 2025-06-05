@@ -26,7 +26,6 @@ class CToucan {
     if(this.falling == true) {
       this.position.add(this.velocity.x, this.velocity.y);
       this.velocity.add(this.acceleration.x,this.acceleration.y);
-     this.velocity.y += 0.7;
     }
     this.mouse = createVector(mouseX, mouseY);
     this.t += random(0.01,0.04);
