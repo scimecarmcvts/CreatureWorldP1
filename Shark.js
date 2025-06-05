@@ -52,12 +52,6 @@ show(){
       this.frameTimer = 0;
     }
 }
-chase(flyingFish) {
-  let dir = p5.Vector.sub(flyingFish.position, this.position);
-  dir.setMag(0.5); // Adjust speed of chase here
-  this.velocity.lerp(dir, 0.1); // Smooth chasing
-}
-
   }
 
 //function mouseClicked (){
