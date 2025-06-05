@@ -9,7 +9,7 @@
 class CToucan {
   constructor(x, y, size) {
     this.img = loadImage("assets/ToucanFrame0.png");
-    this.position = createVector(x, y);
+    this.position = createVector(x,y);
     this.mouse = createVector(mouseX, mouseY);
     this.behaviour = 0;
     this.size = size;
@@ -17,16 +17,18 @@ class CToucan {
     this.falling = false;
     this.velocity = createVector(0,0);
     this.acceleration = createVector(0,0);
+    this.previousX = this.position.x;
+    this.constrainedvalue = 0;
   }
   show() {
     image(this.img, this.position.x, this.position.y, this.size, this.size);
   }
   update() {
-    if(this.falling = true) {
+    if(this.falling == true) {
       this.position.add(this.velocity.x, this.velocity.y);
       this.velocity.add(this.acceleration.x,this.acceleration.y);
+     this.velocity.y += 0.7;
     }
-    this.velocity.limit(10,0);
     this.mouse = createVector(mouseX, mouseY);
     this.t += random(0.01,0.04);
     this.behaviour = 0 + noise(this.t) * (3);
@@ -38,16 +40,23 @@ class CToucan {
       this.img = Tframe1;
     }
     if(mouseIsPressed == true &&
-      this.mouse.x >= this.position.x &&
-      this.mouse.x <= this.position.x + 70 &&
-      this.mouse.y <= this.position.y + 100 &&
-      this.mouse.y >= this.position.y) {
+      this.mouse.x >= this.position.x - 40 &&
+      this.mouse.x <= this.position.x + 40 &&
+      this.mouse.y <= this.position.y + 60 &&
+      this.mouse.y >= this.position.y - 60) {
       this.falling = true;
       this.velocity.add(0,2);
-      this.acceleration.add(0,0.04);
+      this.acceleration.add(0,0.02);
     }
-    if(this.position.y >= height - 200) {
+    if(this.position.y >= height - 200 && this.falling == true) {
       this.velocity.y *= -1;
+      this.velocity.y += 3;
+      if(this.position.y <= height + 10){
+        this.position.y = height - 200;
+      }
+    }
+    if(this.position.y <= 30) {
+      this.position.y = height/2;
     }
 }
 }
