@@ -1,26 +1,22 @@
 class Alien {
   constructor() {
     this.position = createVector(random(width), random(height));
-    this.velocity = createVector(random(2, -2), random(-2,1));
+    this.velocity = createVector(2, -2);
     this.acceleration = createVector(-0.01, 0.01);
-    this.img = loadImage("assets/ufo.png");
+    this.img = loadImage("alien with ufo.png");
   }
 
   update() {
     this.velocity.add(this.acceleration);
-    this.velocity.limit(2);
+    this.velocity.limit(10);
     this.position.add(this.velocity);
-    if (this.position.x > width){
-      this.position.x = width
-      this.velocity.x *= -1
-    }
-   if (this.position.x < 0){
-    this.position.x = 0
-    this.velocity.x *= -1
+  
   }
 
-  }
   show() {
-    image(this.img,this.position.x, this.position.y/20, 50, 50);
+    //stroke(255);
+    fill(0);
+    strokeWeight(2)
+    image(this.img, this.position.x, this.position.y, 2.5, 2.5);
   }
 }

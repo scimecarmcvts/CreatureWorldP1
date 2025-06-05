@@ -44,29 +44,35 @@ async function setup() {
   for (let i = 0; i < 5; i++) {
     w.oceanCreatures.push(new Bird());
   }
-
-  let startY = 200;
-  let treeSize = 20;
-  for (let i = 0; i < 180; i++){
-    //as the loop iterates, move down the screen and increase the tree size
-
-   w.rainForestCreatures.push(
-      new JungleTree(IJTree, IJTree2, random(width), startY, treeSize)
+for (let i = 0; i < 50; i++) {
+    
+    w.rainForestCreatures.push(new Ant());
+  }
+    w.rainForestCreatures.push(
+      new Frog(random(width), random(height), 1, -1, 10, 300, 5)
     );
 
-    treeSize++;
-    startY += 1;
+  let startY = 210;
+  let yInc = 10;
+  let treeSize = 30;
+  for (let j = 0; j < 6; j++){
+  for (let i = 0; i < width; i += 15 + random(-10 * j, 10 * j) + j * 40){
+    //as the loop iterates, move down the screen and increase the tree size
+ 
+   w.rainForestCreatures.push(
+      new JungleTree(IJTree, IJTree2, i , startY + random(0, 50) + (j * 80), treeSize)
+    );
 
   }
+  treeSize += 30;
+}
 
   for (let i = 0; i < 5; i++) {
     w.rainForestCreatures.push(
       new CToucan(random(width), random(height) + 200, 100)
     );
 
-    w.rainForestCreatures.push(
-      new Frog(random(width), random(height), 1, -1, 10, 300, 5)
-    );
+
 
     w.rainForestCreatures.push(
       new Jaguar(random(width), random(height / 2, height))
@@ -76,10 +82,7 @@ async function setup() {
     w.rainForestCreatures.push(new Snake2(snakeImg2) );
   }
 
-  for (let i = 0; i < 50; i++) {
-    
-    w.rainForestCreatures.push(new Ant());
-  }
+  
 
   for (let i = 0; i < 100; i++){
     w.rainForestCreatures.push(new BushBerry());
@@ -144,4 +147,5 @@ function mousePressed() {
 
 function windowResized() {
   resizeCanvas(windowWidth - 10, windowHeight);
+  w.btnR.position(width - 90, 0);
 }
