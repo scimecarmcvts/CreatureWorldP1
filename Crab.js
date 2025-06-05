@@ -1,8 +1,7 @@
 class Crab{
   constructor(){ 
     this.size = random(0.2, 0.6);
-    this.x = random(width);
-    this.y = random(height - 100, height);
+    this.position = createVector(random(width), random(height - 100, height));
     this.display = true;
     this.img = loadImage("assets/crab.png");
     this.currentframe = 0;
@@ -19,8 +18,8 @@ class Crab{
   
   show(){
     
-     this.x = noise(this.xoff) * width;
-    image(this.img, this.x, this.y, this.size * 80, this.size * 80, this.currentframe * 32, 0, 32, 32);
+     this.position.x = noise(this.xoff) * width;
+    image(this.img, this.position.x, this.position.y, this.size * 80, this.size * 80, this.currentframe * 32, 0, 32, 32);
     
     this.xoff += 0.005;
     
