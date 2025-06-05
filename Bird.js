@@ -1,50 +1,55 @@
-
+//Nysa Vadaliya
+//1A Intro to Java
+// 6/5/25
+//Extra: checkedges, fricition slows down after time, when the bird hits the wall it starts back at the right of the screen
 class Bird {
   constructor() {
-    this.x = width / 2;
-    this.y = 100;
-    this.size = 2; 
-    this.img = loadImage("assets/bird.png");
-    this.xoff = random(1000);
-    this.yoff = random(1000);
+    this.position = createVector(random(width), random(height/ 4));
+    this.vel = createVector(-4, random(-0.8, 0.8)); //left up and vertical movement
+    this.acc = createVector(0, 0);
+    this.size = 64;
     this.currentFrame = 0;
     this.frameTimer = 0;
-    //this.xoff = 85;
+    this.startX = random()
+    this.img = loadImage("assets/bird.png");
   }
 
   update() {
-    this.x -= 3; //to make sure it only moves to the left
-    //this.x += (noise(this.xoff) - 0.5) * 2;
-    this.y += (noise(this.yoff) - 0.5) * 2;
-    this.xoff += 0.1;
-    this.yoff += 0.01;
     
-    // switch frame to animate wings
-    this.frameTimer++;
-    if (this.frameTimer > 10) { 
-      this.currentFrame = (this.currentFrame + 1) % 2; // switch between frame 0 and 1
+    this.vel.add(this.acc);
+    this.position.add(this.vel);
+    this.acc.mult(0);
+   // this.vel.mult(0.99);//simple friciton from vector lab slows down over time
+    this.frameTimer++; 
+    //changes between both of the 2 frames
+    if (this.frameTimer > 10) {
+      this.currentFrame = (this.currentFrame + 1) % 2;
       this.frameTimer = 0;
     }
-    
-    if (this.y > height / 4) {
-    this.y = height / 4;
-  } //to make sure it stay at the top of the screen
 
-    
-    if (this.x > width) {
-      this.x = 0;  
-    } else if (this.x < 0) {
-      this.x = width;  
-    } //to make sure if it touches the left side it comes back on screen
-
-    if(this.y > height) {
-      this.y = height / 4;
+    if (this.position.x < -this.size) {
+      this.position.x = width;
+    }
+//making sure it stays at the top of the screen
+    if (this.position.y > height / 4) {
+      this.position.y = height / 4;
+      this.vel.y = 0;
     }
   }
 
   show() {
-    image(this.img, this.x, this.y, 64, 64, this.currentFrame * 32, 0, 32, 32);
- 
-  
-  } //crop the current animation frame from the sprite sheet that was uploaded and draw it at the bird's position scaled
+    image(this.img, this.position.x, this.position.y, this.size, this.size, this.currentFrame * 32, 0, 32, 32);
+  }
+
+  checkEdges() {
+      //left edge
+  if (this.position.x < this.radius) {
+    this.position.x = this.radius;
+    this.velocity.x *= -1;
+  } //top edge
+  if (this.position.y < this.radius) {
+    this.position.y = this.radius;
+    this.velocity.y *= -1;
+  }
+  }
 }
