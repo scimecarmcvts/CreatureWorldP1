@@ -45,21 +45,19 @@ async function setup() {
     w.oceanCreatures.push(new Bird());
   }
 
-  let startY = 220;
+  let startY = 210;
+  let yInc = 10;
   let treeSize = 30;
-  for (let j = 0; j < 10; j++){
-  for (let i = 0; i < width; i += 25 + random(0, 15) + j * 5){
+  for (let j = 0; j < 5; j++){
+  for (let i = 0; i < width; i += 25 + random(0, 25) + j * 40){
     //as the loop iterates, move down the screen and increase the tree size
  
    w.rainForestCreatures.push(
-      new JungleTree(IJTree, IJTree2, i + (j * 20), startY + random(-2, 50) + (j * 40), treeSize)
+      new JungleTree(IJTree, IJTree2, i , startY + random(-2, 50) + (j * 120), treeSize)
     );
 
-    treeSize++;
-    startY += 2.7;
-
   }
-  treeSize += 5;
+  treeSize += 30;
 }
 
   for (let i = 0; i < 5; i++) {
