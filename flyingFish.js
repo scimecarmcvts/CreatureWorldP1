@@ -1,7 +1,7 @@
 // Name: Ekansh Simgekar
 // Date: 6/2/25
 // Project Name: Creature Lab: Fishes (Vector Update)
-// Extra: 
+// Extra: Added another species of fish to the ocean 
  
 class Fish  {
   constructor() {
@@ -12,7 +12,7 @@ this.position2 = createVector(random(width, 0), random(height * 0.3, height * 0.
     this.display = true;
     this.size = random(1,2);
     this.img = loadImage("assets/fish1.png");
-    this.img2 = loadImage("assets/fish2.png");
+    this.img2 = loadImage("assets/fishyellow.png");
     this.choice = 0;
     this.choice2 = 0;
   }
