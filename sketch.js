@@ -45,19 +45,20 @@ async function setup() {
     w.oceanCreatures.push(new Bird());
   }
 
-  let startY = 200;
-  let treeSize = 20;
-  for (let i = 0; i < 180; i++){
+  let startY = 210;
+  let yInc = 10;
+  let treeSize = 30;
+  for (let j = 0; j < 5; j++){
+  for (let i = 0; i < width; i += 25 + random(0, 25) + j * 40){
     //as the loop iterates, move down the screen and increase the tree size
-
+ 
    w.rainForestCreatures.push(
-      new JungleTree(IJTree, IJTree2, random(width), startY, treeSize)
+      new JungleTree(IJTree, IJTree2, i , startY + random(-2, 50) + (j * 120), treeSize)
     );
 
-    treeSize++;
-    startY += 1;
-
   }
+  treeSize += 30;
+}
 
   for (let i = 0; i < 5; i++) {
     w.rainForestCreatures.push(
@@ -144,4 +145,5 @@ function mousePressed() {
 
 function windowResized() {
   resizeCanvas(windowWidth - 10, windowHeight);
+  w.btnR.position(width - 90, 0);
 }
