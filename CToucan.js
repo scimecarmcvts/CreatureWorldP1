@@ -18,7 +18,6 @@ class CToucan {
     this.velocity = createVector(0,0);
     this.acceleration = createVector(0,0);
     this.previousX = this.position.x;
-    this.constrainedvalue = 0;
   }
   show() {
     image(this.img, this.position.x, this.position.y, this.size, this.size);
@@ -51,12 +50,12 @@ class CToucan {
     if(this.position.y >= height - 200 && this.falling == true) {
       this.velocity.y *= -1;
       this.velocity.y += 3;
-      if(this.position.y <= height + 10){
+      if(this.position.y <= height + 70){
         this.position.y = height - 200;
       }
     }
     if(this.position.y <= 30) {
-      this.position.y = height/2;
+      this.position.y = 100;
     }
 }
 }
