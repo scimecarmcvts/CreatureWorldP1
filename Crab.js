@@ -1,3 +1,9 @@
+/*Name: Leo Samontw
+  Date: 6/5/25
+  Project Name: Creature Lab: Crab
+  Extra:
+  */
+
 class Crab{
   constructor(){ 
     this.size = random(0.2, 0.6);
