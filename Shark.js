@@ -1,3 +1,8 @@
+//Name: Nysa Patel
+//Class: 1A CIS Intro to Java
+//Project: Creature Lab 1.1
+//Date: 06/05/25
+//Extra: When shark touches edge, the image frame changes
 
 class Shark {
   constructor(img) {
@@ -5,7 +10,7 @@ class Shark {
     this.position.x = random(width);
     this.position.y = height/2;
     this.display = true;
-    this.size = 1;
+    this.size = 5;
     this.dir = 1;
     this.speed = 10;
     this.currentframe = 0;
@@ -46,10 +51,15 @@ show(){
       this.currentFrame = (this.currentFrame + 1) %2; //switch between the two frames
       this.frameTimer = 0;
     }
+}
+chase(flyingFish) {
+  let dir = p5.Vector.sub(flyingFish.position, this.position);
+  dir.setMag(0.5); // Adjust speed of chase here
+  this.velocity.lerp(dir, 0.1); // Smooth chasing
+}
+
   }
 
-
-}
-function mouseClicked (){
-    this.size*=10;
-}
+//function mouseClicked (){
+    //this.size*=50;
+//}
