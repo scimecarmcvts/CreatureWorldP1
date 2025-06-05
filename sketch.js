@@ -54,6 +54,10 @@ async function setup() {
    w.rainForestCreatures.push(
       new JungleTree(IJTree, IJTree2, i + (j * 20), startY + random(-2, 50) + (j * 40), treeSize)
     );
+
+    treeSize++;
+    startY += 2.7;
+
   }
   treeSize += 5;
 }
