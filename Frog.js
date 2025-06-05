@@ -52,11 +52,11 @@ class Frog{
       if(keyIsPressed){
         if(key == '-' || key == "_"){
           if(this.size > 0){
-          this.size -= .1;
+          this.size /= 1.01;
           }
         } 
         if (key == "=" || key == "+"){
-          this.size += .1;
+          this.size *= 1.01;
         }
       }
       this.position.x = this.mouse.x - this.xoffset;
@@ -73,6 +73,7 @@ class Frog{
        if (this.jumpchance == 80){
        this.jumping = true;
        this.velocity.y = floor(random(-6,-10));
+       this.velocity.y += noise(this.velocity.y * 2) / height;
          this.num = floor(random(0,2));
          // when it jumps gives it a chance to jump leftwards or rightwards
          if (this.num == 0){
