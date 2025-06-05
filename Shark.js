@@ -11,8 +11,8 @@ class Shark {
     this.currentframe = 0;
     this.img = loadImage("./assets/shark.png");
     this.frameTimer = 0;
-    this.velocity = createVector(2,0);
-    this.acceleration= createVector(0.00000001, 0.0000001);
+    this.velocity = createVector(1,0.4);
+    this.acceleration= createVector(0.0000000001, 0.0000000001);
   }
     
 show(){
