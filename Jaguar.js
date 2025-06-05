@@ -1,4 +1,5 @@
 // Neel Ranadive, Creature Lab, 6/2/2025
+// Extra: I made it so that if I click on my Jaguar then the velocity increases
 class Jaguar{
   constructor(){
     this.position = createVector(random(50,width-50), random(350,height-50));
@@ -24,10 +25,16 @@ class Jaguar{
     this.xOffset += 0.01;
     this.yOffset += 0.001;
     */
+    this.velocitylimit = 20;
     this.velocity.add(this.acceleration);
-    this.velocity.limit(2);
+    this.velocity.limit(this.velocitylimit);
     this.position.add(this.velocity);
     this.checkEdges();
+    if (mouseIsPressed/* && mouseX > this.position.x && mouseX < this.position.x + this.size*64 && mouseY > this.position.y && mouseY < this.position.y + this.size*64*/){
+      //this.velocitylimit = this.velocitylimit + 9;
+      this.acceleration = this.acceleration.add(createVector(5,5));
+    }
+    console.log (this.position);
   }
   checkEdges(){
     if (this.position.x >= width || this.position.x <= 0){
