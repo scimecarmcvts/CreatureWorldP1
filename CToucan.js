@@ -38,10 +38,10 @@ class CToucan {
       this.img = Tframe1;
     }
     if(mouseIsPressed == true &&
-      this.mouse.x >= this.position.x &&
-      this.mouse.x <= this.position.x + 70 &&
-      this.mouse.y <= this.position.y + 100 &&
-      this.mouse.y >= this.position.y) {
+      this.mouse.x >= this.position.x - 40 &&
+      this.mouse.x <= this.position.x + 40 &&
+      this.mouse.y <= this.position.y + 60 &&
+      this.mouse.y >= this.position.y - 60) {
       this.falling = true;
       this.velocity.add(0,2);
       this.acceleration.add(0,0.04);
