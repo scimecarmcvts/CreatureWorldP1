@@ -3,7 +3,7 @@ class Shark {
   constructor(img) {
     this.position = createVector(50, 300);
     this.position.x = random(width);
-    this.position.y = height/4 + random(height-height/4);
+    this.position.y = height/2;
     this.display = true;
     this.size = 1;
     this.dir = 1;
@@ -11,8 +11,8 @@ class Shark {
     this.currentframe = 0;
     this.img = loadImage("./assets/shark.png");
     this.frameTimer = 0;
-    this.velocity = createVector(-1,-1);
-    this.acceleration= createVector(0.00000001, 0.0000001);
+    this.velocity = createVector(1,0.4);
+    this.acceleration= createVector(0.0000000001, 0.0000000001);
   }
     
 show(){
