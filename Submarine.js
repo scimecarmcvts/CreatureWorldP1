@@ -39,6 +39,8 @@ class Submarine{
     
     for(let k=0;k<this.amount;k++){
       fill(this.bubblecolor);
+      stroke(255);
+      strokeWeight(2)
       ellipse(this.bubblepos[k].x,this.bubblepos[k].y,this.bubblesize[k],this.bubblesize[k]);
       
       }
