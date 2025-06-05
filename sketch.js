@@ -55,7 +55,7 @@ async function setup() {
     );
 
     treeSize++;
-    startY += 1;
+    startY += 2.7;
 
   }
 
