@@ -1,3 +1,9 @@
+// Header:
+// Dilpreet Singh
+// 1A CIS
+// 6/5/25
+// Creature World: Desert Tumbleweed
+// Extra: Quantum tunneling to other side as tumb passes off of screen
 
 class Tumbleweed {
 constructor() {
@@ -32,12 +38,8 @@ update(){
 } else if (this.position.x < 0) {
   this.position.x = width;
 }
-
-if (this.position.y > height) {
-  this.position.y = 0;
-} else if (this.position.y < 0) {
-  this.position.y = height;
-}
-
+ if(this.position.y < height / 4) {
+  this.position.y = random((height/4), height);
+ }
 }
 }

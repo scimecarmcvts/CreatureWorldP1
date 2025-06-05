@@ -1,3 +1,8 @@
+//Name: Nysa Patel
+//Class: 1A CIS Intro to Java
+//Project: Creature Lab 1.1
+//Date: 06/05/25
+//Extra: When shark touches edge, the image frame changes
 
 class Shark {
   constructor(img) {
@@ -5,7 +10,7 @@ class Shark {
     this.position.x = random(width);
     this.position.y = height/2;
     this.display = true;
-    this.size = 1;
+    this.size = 5;
     this.dir = 1;
     this.speed = 10;
     this.currentframe = 0;
@@ -46,10 +51,9 @@ show(){
       this.currentFrame = (this.currentFrame + 1) %2; //switch between the two frames
       this.frameTimer = 0;
     }
+}
   }
 
-
-}
-function mouseClicked (){
-    this.size*=10;
-}
+//function mouseClicked (){
+    //this.size*=50;
+//}

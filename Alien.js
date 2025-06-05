@@ -14,7 +14,7 @@ class Alien {
   }
 
   show() {
-    stroke(255);
+    //stroke(255);
     fill(0);
     strokeWeight(2)
     image(this.img, this.position.x, this.position.y, 2.5, 2.5);
