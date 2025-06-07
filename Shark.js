@@ -2,7 +2,7 @@
 //Class: 1A CIS Intro to Java
 //Project: Creature Lab 1.1
 //Date: 06/05/25
-//Extra: When shark touches edge, the image frame changes
+//Extra: When shark touches edge, the image frame changes and slight bobbing up and down using sine
 
 class Shark {
   constructor(img) {
@@ -51,9 +51,7 @@ show(){
       this.currentFrame = (this.currentFrame + 1) %2; //switch between the two frames
       this.frameTimer = 0;
     }
+    this.position.y += sin(frameCount * 0.1) * 1;
+
 }
   }
-
-//function mouseClicked (){
-    //this.size*=50;
-//}
