@@ -13,13 +13,21 @@ class Bird {
     this.startX = random()
     this.img = loadImage("assets/bird.png");
   }
+  applyForce(force) {
+    this.acc.add(force); //pushes the bird in a up in little motions over time
+  }
+
 
   update() {
-    
+    if (frameCount % 5 === 0) {
+      let flutter = random(-0.4, 0.4);
+      this.applyForce(createVector(0, flutter)); //small random vertical force every 5 frames
+    } //add anothe rbehavior(fluttering for extra)
     this.vel.add(this.acc);
     this.position.add(this.vel);
     this.acc.mult(0);
-   // this.vel.mult(0.99);//simple friciton from vector lab slows down over time
+    this.vel.y *= 0.98;
+    this.vel.limit(5);//simple friciton from vector lab slows down over time
     this.frameTimer++; 
     //changes between both of the 2 frames
     if (this.frameTimer > 10) {
@@ -35,6 +43,7 @@ class Bird {
       this.position.y = height / 4;
       this.vel.y = 0;
     }
+    this.checkEdges();
   }
 
   show() {
