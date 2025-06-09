@@ -1,44 +1,68 @@
-//Ayaan Patel, 6/2/2025/, Ecosystem Lab(Camel), EXTRA:
+// Ayaan Patel, 6/2/2025, Ecosystem Lab(Cactus)
+// EXTRA: Every few seconds, the cactus sways hard in a random direction to simulate desert wind gusts.
+
 class Cactus {
   constructor(img, size, x, y) {
     this.img = img;
     this.size = size;
-    this.position = createVector(x, y)
+    this.position = createVector(x, y);
 
-    this.maxAngle = 45; // maximum sway
+    this.velocity = createVector(0, 0);
+    this.acceleration = createVector(0, 0);
+
+    this.maxAngle = 65; // max sway angle in degrees
     this.angle = 0;
-    
-    this.noiseSpeed = 0.01;
-    this.velocity =.25;
-    this.xOffset = random(200,500);
+
+    this.noiseSpeed = 0.05;
+    this.xOffset = random(200, 500);
+
+    // Wind gust control
+    this.gustActive = false;
+    this.gustAngle = 0;
+    this.gustEndFrame = 0;
+    this.nextGustFrame = frameCount + int(random(180, 360)); // 3-6 seconds later
   }
 
-  update( ) {
-    //organic movement with noise
+  update() {
+    // Update velocity & position (can add movement if needed)
+    this.velocity.add(this.acceleration);
+    this.position.add(this.velocity);
+    this.acceleration.mult(0);
 
-    let noiseV = noise(this.xOffset);
-    
-    this.angle = map(noiseV + this.velocity, 0, 1, -this.maxAngle, this.maxAngle);
-    
-    this.xOffset = this.xOffset + this.noiseSpeed;
-    //this.velocity.add(this.acceleration);
-    //this.velocity.limit(6);
-    //this.position.add(this.velocity);
+    // Handle gust timing
+    if (!this.gustActive && frameCount >= this.nextGustFrame) {
+      this.gustActive = true;
+      // Random gust angle between -60 and 60 degrees
+      this.gustAngle = radians(random([-1, 1]) * random(30, 120));
+      this.gustEndFrame = frameCount + 60; //longer gust
+    }
 
+    // End gust
+    if (this.gustActive && frameCount > this.gustEndFrame) {
+      this.gustActive = false;
+      this.nextGustFrame = frameCount + int(random(180, 360));
+    }
+
+    // Set angle
+    if (this.gustActive) {
+      this.angle = this.gustAngle;
+    } else {
+      let noiseV = noise(this.xOffset);
+      this.angle = radians(map(noiseV, 0, 1, -this.maxAngle, this.maxAngle));
+      this.xOffset += this.noiseSpeed;
+    }
   }
 
-  show( ) {
-
- push(); 
- translate(this.position.x, this.position.y);
-    //scale(1,-1);
-    
-  shearX(this.angle);
-  imageMode(CENTER);
-    
-  image(this.img, 0, 0, this.size, this.size);
+  show() {
+    push();
+    translate(this.position.x, this.position.y);
+    shearX(this.angle);
+    imageMode(CENTER);
+    image(this.img, 0, 0, this.size, this.size);
     pop();
   }
 
-  display() { this.show(); }  // also shows the cactus
+  display() {
+    this.show();
+  }
 }
