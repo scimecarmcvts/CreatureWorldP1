@@ -6,7 +6,7 @@ let scorpImg;
 let snakeImg;
 let snakeImg1;
 let snakeImg2;
-let underground, above;
+let underground, above, wormIndex;
 
 async function setup() {
   img = await loadImage("./assets/rock.png");
@@ -20,6 +20,10 @@ async function setup() {
   Tframe0 = loadImage("assets/ToucanFrame0.png");
   Tframe1 = loadImage("assets/ToucanFrame1.png");
   Tframe2 = loadImage("assets/ToucanFrame2.png");
+  underground = loadImage("assets/underground.png");
+  above = loadImage("assets/above.png");
+
+
   createCanvas(1980, 1080);
 
 
@@ -101,8 +105,14 @@ for (let i = 0; i < 50; i++) {
     w.desertCreatures.push(new Scorpion(scorpImg));
      w.desertCreatures.push(
      new Snake(random(width), random(height), snakeImg));
-    //  w.desertCreatures.push(new Worm(random(0, width), random(height/4, height), underground, above))
+   
   }
+   w.desertCreatures.push(new Worm(random(0, width), random(height/4, height), underground, above));
+  wormIndex = w.desertCreatures.length - 1;
+   setInterval(() => {
+    w.desertCreatures[wormIndex].changeSprite();
+  }, 5000);
+    
 
   for (let i = 0; i < 150; i++) {
     let cHeight = random(height/4, height);

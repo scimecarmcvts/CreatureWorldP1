@@ -34,7 +34,6 @@ class Jaguar{
       //this.velocitylimit = this.velocitylimit + 9;
       this.acceleration = this.acceleration.add(createVector(5,5));
     }
-    console.log (this.position);
   }
   checkEdges(){
     if (this.position.x >= width || this.position.x <= 0){

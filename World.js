@@ -2,7 +2,7 @@
 class World {
   constructor() {
     //Scenes
-    this.scene = 0.0;
+    this.scene = 2.0;
     this.scenes = ["Rainforest", "Ocean", "Desert"];
 
     //Buttons

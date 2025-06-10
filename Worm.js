@@ -34,10 +34,12 @@ class Worm {
   
     changeSprite() {
       let result = round(random(0, 1));
+      print(result);
       if (result == 1) {
         this.currentSprite = this.above;
       } else {
         this.currentSprite = this.underground;
       }
     }
-  }
+  
+}
