@@ -48,9 +48,7 @@ for (let i = 0; i < 50; i++) {
     
     w.rainForestCreatures.push(new Ant());
   }
-    w.rainForestCreatures.push(
-      new Frog(random(width), random(height), 1, -1, 10, 300, 5)
-    );
+   
 
   let startY = 210;
   let yInc = 10;
@@ -72,7 +70,9 @@ for (let i = 0; i < 50; i++) {
       new CToucan(random(width), random(height) + 200, 100)
     );
 
-
+ w.rainForestCreatures.push(
+      new Frog(random(width), random(height), 1, -1, 10, 300, 5)
+    );
 
     w.rainForestCreatures.push(
       new Jaguar(random(width), random(height / 2, height))
